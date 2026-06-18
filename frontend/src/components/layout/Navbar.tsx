@@ -29,11 +29,11 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b bg-background/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4">
-        <Link to="/" className="flex items-center gap-2.5">
-          <span className="flex h-8 w-8 items-center justify-center rounded-md bg-primary font-serif text-base text-primary-foreground">
+        <Link to="/" className="flex shrink-0 items-center gap-2">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary font-serif text-base text-primary-foreground">
             E
           </span>
-          <span className="font-serif text-xl font-semibold uppercase tracking-[0.18em]">
+          <span className="font-serif text-base font-semibold uppercase tracking-[0.08em] sm:text-xl sm:tracking-[0.18em]">
             EventRentHub
           </span>
         </Link>

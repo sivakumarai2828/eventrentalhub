@@ -46,6 +46,7 @@ export const ownerTabs: Tab[] = [
 
 export const adminTabs: Tab[] = [
   { to: "/admin", label: "Overview", end: true },
+  { to: "/admin/bookings", label: "Bookings" },
   { to: "/admin/categories", label: "Categories" },
   { to: "/admin/users", label: "Users" },
   { to: "/admin/listings", label: "Listings" },

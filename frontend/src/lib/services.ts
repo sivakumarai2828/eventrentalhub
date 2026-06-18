@@ -114,3 +114,7 @@ export const adminSetItemStatus = (id: string, status: "active" | "inactive") =>
   api
     .patch<Item>(`/api/admin/items/${id}/status`, null, { params: { status } })
     .then((r) => r.data);
+export const adminListBookings = (status?: string) =>
+  api
+    .get<BookingRequest[]>("/api/admin/bookings", { params: { status } })
+    .then((r) => r.data);

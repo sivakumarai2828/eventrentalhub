@@ -9,6 +9,23 @@ from ..database import get_db
 router = APIRouter(prefix="/api/admin", tags=["admin"], dependencies=[Depends(require_admin)])
 
 
+@router.get("/bookings", response_model=list[schemas.BookingRequestOut])
+def admin_list_bookings(
+    status: str | None = None,
+    db: Session = Depends(get_db),
+):
+    """Every booking request across all owners (admin oversight)."""
+    from .bookings import _serialize
+
+    query = db.query(models.BookingRequest).options(
+        selectinload(models.BookingRequest.items).selectinload(models.BookingItem.item)
+    )
+    if status:
+        query = query.filter(models.BookingRequest.status == status)
+    reqs = query.order_by(models.BookingRequest.created_at.desc()).all()
+    return [_serialize(db, r) for r in reqs]
+
+
 @router.get("/users", response_model=list[schemas.UserOut])
 def list_users(
     q: str | None = None,

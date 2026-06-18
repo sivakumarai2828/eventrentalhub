@@ -16,6 +16,7 @@ import { OwnerInventory } from "./pages/owner/OwnerInventory";
 import { OwnerItemForm } from "./pages/owner/OwnerItemForm";
 import { OwnerBookings } from "./pages/owner/OwnerBookings";
 import { AdminOverview } from "./pages/admin/AdminOverview";
+import { AdminBookings } from "./pages/admin/AdminBookings";
 import { AdminCategories } from "./pages/admin/AdminCategories";
 import { AdminUsers } from "./pages/admin/AdminUsers";
 import { AdminListings } from "./pages/admin/AdminListings";
@@ -97,6 +98,14 @@ export default function App() {
           element={
             <ProtectedRoute roles={["admin"]}>
               <AdminOverview />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="admin/bookings"
+          element={
+            <ProtectedRoute roles={["admin"]}>
+              <AdminBookings />
             </ProtectedRoute>
           }
         />
