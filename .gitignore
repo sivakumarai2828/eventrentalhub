@@ -1,0 +1,27 @@
+# --- Python / backend ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.db
+*.sqlite3
+.env
+
+# --- Node / frontend ---
+node_modules/
+dist/
+build/
+.vite/
+
+# --- Editors / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+logs/
+
+# --- Agent / local-only ---
+.claude/
+_backup_pre_shadcn/

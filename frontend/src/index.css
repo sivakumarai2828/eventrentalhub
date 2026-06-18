@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 38% 97%;
+    --foreground: 20 16% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 16% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 16% 15%;
+    --primary: 20 16% 15%;
+    --primary-foreground: 40 38% 97%;
+    --secondary: 38 33% 90%;
+    --secondary-foreground: 20 16% 15%;
+    --muted: 38 33% 90%;
+    --muted-foreground: 23 9% 38%;
+    --accent: 38 33% 90%;
+    --accent-foreground: 20 16% 15%;
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 36 30% 87%;
+    --input: 36 30% 87%;
+    --ring: 39 46% 61%;
+    --gold: 39 46% 61%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 40 8% 8%;
+    --foreground: 40 20% 95%;
+    --card: 40 12% 10%;
+    --card-foreground: 40 20% 95%;
+    --popover: 40 12% 10%;
+    --popover-foreground: 40 20% 95%;
+    --primary: 40 20% 95%;
+    --primary-foreground: 27 13% 9%;
+    --secondary: 37 14% 15%;
+    --secondary-foreground: 40 20% 95%;
+    --muted: 37 14% 15%;
+    --muted-foreground: 37 8% 63%;
+    --accent: 37 14% 15%;
+    --accent-foreground: 40 20% 95%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 37 14% 15%;
+    --input: 37 14% 15%;
+    --ring: 40 20% 83%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+  h1,
+  h2 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    letter-spacing: 0.01em;
+  }
+}
+
+/* Legacy utility classes — retained while components migrate to shadcn. */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-ring/40 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-primary text-primary-foreground hover:bg-gold hover:text-foreground;
+  }
+  .btn-secondary {
+    @apply btn border border-input bg-background text-foreground hover:bg-accent;
+  }
+  .btn-ghost {
+    @apply btn text-foreground hover:bg-accent;
+  }
+  .input {
+    @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring;
+  }
+  .label {
+    @apply mb-1 block text-sm font-medium text-foreground;
+  }
+  .card {
+    @apply rounded-xl border border-border bg-card text-card-foreground;
+  }
+  .eyebrow {
+    @apply mb-3 inline-block text-xs font-medium uppercase tracking-[0.25em] text-gold;
+  }
+  .font-serif {
+    font-family: "Cormorant Garamond", Georgia, serif;
+  }
+}
+
+/* Gentle floating animation for the hero image collage. */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+.animate-float {
+  animation: float 7s ease-in-out infinite;
+}
+
+/* Ken-Burns slow zoom for hero slides. */
+@keyframes kenburns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.12);
+  }
+}
+.animate-kenburns {
+  animation: kenburns 16s ease-in-out infinite alternate;
+}
+
+/* Marquee category strip. */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-marquee,
+  .animate-kenburns {
+    animation: none;
+  }
+}
