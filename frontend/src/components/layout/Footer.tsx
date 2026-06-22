@@ -68,7 +68,12 @@ export function Footer() {
             </Link>
           </li>
           <li>
-            <Link to="/register" className={linkClass}>
+            <Link to="/categories" className={linkClass}>
+              Shop by category
+            </Link>
+          </li>
+          <li>
+            <Link to="/become-a-host" className={linkClass}>
               Become an owner
             </Link>
           </li>
@@ -80,7 +85,11 @@ export function Footer() {
         </FooterCol>
 
         <FooterCol title="Support">
-          <li>How it works</li>
+          <li>
+            <Link to="/how-it-works" className={linkClass}>
+              How it works
+            </Link>
+          </li>
           <li>hello@eventrenthub.com</li>
           <li>Instagram · Pinterest</li>
         </FooterCol>

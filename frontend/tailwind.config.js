@@ -51,6 +51,13 @@ export default {
           DEFAULT: "#C9A96E",
           dark: "#A8884F",
         },
+        // Champagne-gold (Party Loft hero accent).
+        champagne: {
+          light: "#f5e6b2",
+          DEFAULT: "#e8c96e",
+          dark: "#d4a840",
+          ink: "#3a2800",
+        },
         // Legacy tokens kept so not-yet-migrated components keep compiling.
         brand: {
           50: "#F7F3EC",
@@ -75,6 +82,12 @@ export default {
         sans: ["Inter", "system-ui", "sans-serif"],
         display: ["'Plus Jakarta Sans'", "Inter", "system-ui", "sans-serif"],
         serif: ["'Cormorant Garamond'", "Georgia", "serif"],
+        playfair: ["'Playfair Display'", "Georgia", "serif"],
+        mont: ["Montserrat", "Inter", "system-ui", "sans-serif"],
+      },
+      backgroundImage: {
+        "gold-gradient": "linear-gradient(135deg, #f5e6b2, #d4a840)",
+        "gold-shimmer": "linear-gradient(135deg, #f5e6b2, #d4a840, #f5e6b2)",
       },
       keyframes: {
         "accordion-down": {
@@ -85,10 +98,15 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        shimmer: {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        shimmer: "shimmer 2.5s ease infinite",
       },
     },
   },

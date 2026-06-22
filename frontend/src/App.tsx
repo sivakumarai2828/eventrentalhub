@@ -4,6 +4,9 @@ import { Layout } from "./components/layout/Layout";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Home } from "./pages/Home";
 import { Browse } from "./pages/Browse";
+import { Categories } from "./pages/Categories";
+import { HowItWorks } from "./pages/HowItWorks";
+import { BecomeHost } from "./pages/BecomeHost";
 import { ItemDetail } from "./pages/ItemDetail";
 import { Cart } from "./pages/Cart";
 import { Login } from "./pages/Login";
@@ -27,7 +30,10 @@ export default function App() {
       <Route element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="browse" element={<Browse />} />
+        <Route path="categories" element={<Categories />} />
         <Route path="categories/:categoryId" element={<Browse />} />
+        <Route path="how-it-works" element={<HowItWorks />} />
+        <Route path="become-a-host" element={<BecomeHost />} />
         <Route path="items/:itemId" element={<ItemDetail />} />
         <Route path="cart" element={<Cart />} />
         <Route path="login" element={<Login />} />
