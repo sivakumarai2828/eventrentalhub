@@ -99,6 +99,13 @@
   .font-serif {
     font-family: "Cormorant Garamond", Georgia, serif;
   }
+  /* Frosted-glass surface for overlays / price tags. */
+  .glass-panel {
+    @apply border border-white/20 bg-white/70 shadow-premium backdrop-blur-md;
+  }
+  .dark .glass-panel {
+    @apply border-white/10 bg-card/70;
+  }
 }
 
 /* Gentle floating animation for the hero image collage. */
@@ -144,7 +151,8 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-float,
   .animate-marquee,
-  .animate-kenburns {
+  .animate-kenburns,
+  .animate-fade-in {
     animation: none;
   }
 }

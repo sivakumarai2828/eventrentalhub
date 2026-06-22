@@ -89,6 +89,12 @@ export default {
         "gold-gradient": "linear-gradient(135deg, #f5e6b2, #d4a840)",
         "gold-shimmer": "linear-gradient(135deg, #f5e6b2, #d4a840, #f5e6b2)",
       },
+      boxShadow: {
+        premium:
+          "0 10px 30px -10px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)",
+        "premium-hover":
+          "0 20px 40px -10px rgba(0, 0, 0, 0.15), 0 8px 12px -6px rgba(0, 0, 0, 0.1)",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -102,11 +108,16 @@ export default {
           "0%, 100%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" },
         },
+        fadeIn: {
+          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         shimmer: "shimmer 2.5s ease infinite",
+        "fade-in": "fadeIn 0.5s ease-in-out",
       },
     },
   },

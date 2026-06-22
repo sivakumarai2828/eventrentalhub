@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
+import { motion, type HTMLMotionProps } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 
@@ -34,6 +35,13 @@ const buttonVariants = cva(
   }
 )
 
+// Subtle spring micro-interaction applied to real <button> elements.
+const MOTION = {
+  whileHover: { scale: 1.02 },
+  whileTap: { scale: 0.98 },
+  transition: { type: "spring", stiffness: 300, damping: 20 },
+} as const
+
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
@@ -42,12 +50,31 @@ export interface ButtonProps
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
+    const classes = cn(buttonVariants({ variant, size, className }))
+
+    // asChild renders the consumer's element (e.g. a <Link>) via Slot — leave
+    // it untouched so navigation buttons and icon links keep working exactly.
+    if (asChild) {
+      return <Slot className={classes} ref={ref} {...props} />
+    }
+
+    // Drop the handful of DOM handlers whose signatures clash with Framer
+    // Motion's, then animate the button itself.
+    const {
+      onAnimationStart: _onAnimationStart,
+      onAnimationEnd: _onAnimationEnd,
+      onDrag: _onDrag,
+      onDragStart: _onDragStart,
+      onDragEnd: _onDragEnd,
+      ...rest
+    } = props
+
     return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+      <motion.button
+        className={classes}
         ref={ref}
-        {...props}
+        {...MOTION}
+        {...(rest as HTMLMotionProps<"button">)}
       />
     )
   }

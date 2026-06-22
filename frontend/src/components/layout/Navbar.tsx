@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { ShoppingCart } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -100,7 +101,7 @@ export function Navbar() {
     // Glassy, translucent bar floating over the full-bleed hero (Party Loft).
     return (
       <header className="absolute inset-x-0 top-0 z-40">
-        <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between gap-4 px-4 sm:px-8">
+        <div className="mx-auto flex h-[72px] max-w-7xl animate-fade-in items-center justify-between gap-4 px-4 sm:px-8">
           {/* Serif italic logo */}
           <Link to="/" className="flex shrink-0 flex-col items-start leading-none">
             <span className="font-playfair text-2xl font-bold italic tracking-tight text-white">
@@ -128,13 +129,16 @@ export function Navbar() {
             {/* Gold "Get a Quote" CTA — opens the quote form modal */}
             <QuoteDialog
               trigger={
-                <button
+                <motion.button
                   type="button"
-                  className="relative hidden overflow-hidden rounded-full px-6 py-2.5 font-mont text-[11px] font-bold uppercase tracking-[0.1em] text-champagne-ink transition-transform hover:scale-[1.04] lg:inline-flex"
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="relative hidden overflow-hidden rounded-full px-6 py-2.5 font-mont text-[11px] font-bold uppercase tracking-[0.1em] text-champagne-ink lg:inline-flex"
                 >
                   <span className="absolute inset-0 animate-shimmer bg-gold-shimmer bg-[length:200%]" />
                   <span className="relative">✦ Get a Quote</span>
-                </button>
+                </motion.button>
               }
             />
 

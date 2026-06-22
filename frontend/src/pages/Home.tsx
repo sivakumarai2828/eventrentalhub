@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 import { useEffect, useState, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
@@ -57,7 +58,7 @@ export function Home() {
       <div className="relative flex flex-1 items-center justify-center px-4 pb-10 pt-[72px]">
         <form
           onSubmit={submitSearch}
-          className="flex w-full max-w-xl items-center gap-2 rounded-[20px] border border-white/30 bg-white/[0.11] p-[7px] pl-5 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+          className="flex w-full max-w-xl animate-fade-in items-center gap-2 rounded-[20px] border border-white/30 bg-white/[0.11] p-[7px] pl-5 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-colors duration-300 focus-within:border-white/55 focus-within:bg-white/[0.16]"
         >
           <Search className="h-5 w-5 shrink-0 text-white/50" />
           <input
@@ -66,12 +67,15 @@ export function Home() {
             value={q}
             onChange={(e) => setQ(e.target.value)}
           />
-          <button
+          <motion.button
             type="submit"
-            className="whitespace-nowrap rounded-[14px] bg-gold-gradient px-7 py-2.5 font-mont text-[13px] font-bold tracking-wide text-champagne-ink transition hover:scale-[1.02] hover:opacity-95"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            className="whitespace-nowrap rounded-[14px] bg-gold-gradient px-7 py-2.5 font-mont text-[13px] font-bold tracking-wide text-champagne-ink hover:opacity-95"
           >
             Search
-          </button>
+          </motion.button>
         </form>
       </div>
 
