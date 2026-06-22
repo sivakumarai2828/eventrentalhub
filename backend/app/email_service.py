@@ -42,6 +42,27 @@ def notify_request_submitted(owner_email: str, customer_name: str, item_count: i
     )
 
 
+def notify_quote_request(
+    owner_email: str,
+    name: str,
+    email: str,
+    phone: str | None,
+    event_date: str | None,
+    categories: list[str],
+    details: str | None,
+) -> None:
+    cats = ", ".join(categories) if categories else "—"
+    body = (
+        f"New quote request from {name} <{email}>.\n\n"
+        f"Phone: {phone or '—'}\n"
+        f"Event date: {event_date or '—'}\n"
+        f"Interested in: {cats}\n"
+        f"Details: {details or '—'}\n\n"
+        "Reply directly to the customer to send availability and a quote."
+    )
+    _send(owner_email, "New quote request on EventRentHub", body)
+
+
 def notify_request_decided(customer_email: str, status: str) -> None:
     pretty = status.capitalize()
     _send(

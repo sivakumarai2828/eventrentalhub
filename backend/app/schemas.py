@@ -234,6 +234,18 @@ class BookingRequestOut(BaseModel):
 
 
 # --------------------------------------------------------------------------- #
+# Quote requests (public "Get a Quote" lead form)
+# --------------------------------------------------------------------------- #
+class QuoteRequestCreate(BaseModel):
+    name: str = Field(..., min_length=1, max_length=200)
+    email: EmailStr
+    phone: str | None = Field(None, max_length=50)
+    event_date: str | None = Field(None, max_length=40)
+    categories: list[str] = Field(default_factory=list)
+    details: str | None = Field(None, max_length=4000)
+
+
+# --------------------------------------------------------------------------- #
 # Misc
 # --------------------------------------------------------------------------- #
 class UploadSignedUrl(BaseModel):

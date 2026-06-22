@@ -15,7 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { listCategories } from "@/lib/services";
+import { createQuote, listCategories } from "@/lib/services";
 
 const EMPTY = { name: "", email: "", phone: "", eventDate: "", details: "" };
 
@@ -26,13 +26,14 @@ const FALLBACK_CATEGORIES = ["Backdrops", "Furniture", "Drapes", "Lighting", "Fl
  * "Get a Quote" lead-capture modal. The trigger (a styled button/link) is
  * passed in so it can match its surroundings (e.g. the gold hero CTA).
  *
- * NOTE: submission is currently client-side only — it shows a confirmation but
- * does not yet POST anywhere. Wire to a backend lead/email endpoint before this
- * goes live (see eventrenthub-next-steps).
+ * Submits to POST /api/quotes, which emails the owner/admin. The email only
+ * actually sends when EMAILS_ENABLED=true on the backend (otherwise it's logged).
  */
 export function QuoteDialog({ trigger }: { trigger: ReactNode }) {
   const [open, setOpen] = useState(false);
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(false);
   const [form, setForm] = useState(EMPTY);
   const [picked, setPicked] = useState<string[]>([]);
 
@@ -55,9 +56,25 @@ export function QuoteDialog({ trigger }: { trigger: ReactNode }) {
       p.includes(name) ? p.filter((x) => x !== name) : [...p, name],
     );
 
-  const submit = (e: FormEvent) => {
+  const submit = async (e: FormEvent) => {
     e.preventDefault();
-    setSent(true);
+    setSubmitting(true);
+    setError(false);
+    try {
+      await createQuote({
+        name: form.name,
+        email: form.email,
+        phone: form.phone || undefined,
+        event_date: form.eventDate || undefined,
+        categories: picked,
+        details: form.details || undefined,
+      });
+      setSent(true);
+    } catch {
+      setError(true);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   // Reset back to the empty form whenever the dialog fully closes.
@@ -65,6 +82,8 @@ export function QuoteDialog({ trigger }: { trigger: ReactNode }) {
     setOpen(next);
     if (!next) {
       setSent(false);
+      setError(false);
+      setSubmitting(false);
       setForm(EMPTY);
       setPicked([]);
     }
@@ -177,8 +196,14 @@ export function QuoteDialog({ trigger }: { trigger: ReactNode }) {
                 />
               </div>
 
-              <Button type="submit" className="w-full">
-                Send request
+              {error && (
+                <p className="text-sm text-destructive">
+                  Something went wrong sending your request. Please try again.
+                </p>
+              )}
+
+              <Button type="submit" className="w-full" disabled={submitting}>
+                {submitting ? "Sending…" : "Send request"}
               </Button>
             </form>
           </>

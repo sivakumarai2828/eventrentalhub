@@ -6,7 +6,16 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .config import settings
 from .database import Base, SessionLocal, engine
-from .routers import admin, availability, bookings, categories, images, items, users
+from .routers import (
+    admin,
+    availability,
+    bookings,
+    categories,
+    images,
+    items,
+    quotes,
+    users,
+)
 from .seed import seed_categories, seed_demo_items
 
 logging.basicConfig(level=logging.INFO)
@@ -26,7 +35,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-for module in (users, categories, items, images, availability, bookings, admin):
+for module in (users, categories, items, images, availability, bookings, quotes, admin):
     app.include_router(module.router)
 
 

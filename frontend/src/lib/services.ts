@@ -103,6 +103,19 @@ export const updateBookingStatus = (id: string, status: string) =>
     .patch<BookingRequest>(`/api/bookings/${id}/status`, { status })
     .then((r) => r.data);
 
+// --- Quote requests ("Get a Quote" lead form) ---
+export interface QuoteInput {
+  name: string;
+  email: string;
+  phone?: string;
+  event_date?: string;
+  categories: string[];
+  details?: string;
+}
+
+export const createQuote = (payload: QuoteInput) =>
+  api.post("/api/quotes", payload).then((r) => r.data);
+
 // --- Admin ---
 export const adminListUsers = (params: { q?: string; role?: string } = {}) =>
   api.get<UserProfile[]>("/api/admin/users", { params }).then((r) => r.data);
