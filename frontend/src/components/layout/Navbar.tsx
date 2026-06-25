@@ -48,13 +48,13 @@ export function Navbar() {
         <DropdownMenuTrigger asChild>
           <button
             className={`rounded-full outline-none focus-visible:ring-2 ${
-              onHero ? "focus-visible:ring-white/60" : "focus-visible:ring-ring"
+              onHero ? "focus-visible:ring-champagne-dark/50" : "focus-visible:ring-ring"
             }`}
           >
             <Avatar className="h-9 w-9">
               <AvatarFallback
                 className={`text-sm font-semibold ${
-                  onHero ? "bg-white/15 text-white" : "bg-secondary"
+                  onHero ? "bg-champagne-ink/10 text-[#3a2800]" : "bg-secondary"
                 }`}
               >
                 {initial}
@@ -102,30 +102,20 @@ export function Navbar() {
     return (
       <header className="absolute inset-x-0 top-0 z-40">
         <div className="mx-auto flex h-[72px] max-w-7xl animate-fade-in items-center justify-between gap-4 px-4 sm:px-8">
-          {/* Serif italic logo */}
-          <Link to="/" className="flex shrink-0 flex-col items-start leading-none">
-            <span className="font-playfair text-2xl font-bold italic tracking-tight text-white">
-              EventRentHub
-            </span>
-            <span className="mt-0.5 text-[10px] font-light uppercase tracking-[0.5em] text-champagne-dark">
-              Rentals
-            </span>
-          </Link>
-
-          {/* Glassy section tabs */}
-          <nav className="hidden items-center gap-0.5 rounded-full border border-white/15 bg-white/[0.08] p-1 backdrop-blur-md lg:flex">
+          {/* Glassy section tabs (logo removed — brand shows in the hero) */}
+          <nav className="hidden items-center gap-0.5 rounded-full border border-black/5 bg-white/55 p-1 backdrop-blur-md lg:flex">
             {NAV_TABS.map((t) => (
               <Link
                 key={t.to}
                 to={t.to}
-                className="whitespace-nowrap rounded-full px-4 py-1.5 font-mont text-xs tracking-wide text-white/75 transition hover:bg-white/10 hover:text-white"
+                className="whitespace-nowrap rounded-full px-4 py-1.5 font-mont text-xs tracking-wide text-[#6a5a36] transition hover:bg-black/5 hover:text-[#3a2800]"
               >
                 {t.label}
               </Link>
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="ml-auto flex items-center gap-2">
             {/* Gold "Get a Quote" CTA — opens the quote form modal */}
             <QuoteDialog
               trigger={
@@ -146,7 +136,7 @@ export function Navbar() {
               asChild
               variant="ghost"
               size="icon"
-              className="relative text-white hover:bg-white/10 hover:text-white"
+              className="relative text-[#3a2800] hover:bg-black/5 hover:text-[#3a2800]"
             >
               <Link to="/cart" aria-label="Rental cart">
                 <ShoppingCart className="h-5 w-5" />
@@ -164,7 +154,7 @@ export function Navbar() {
               <Button
                 asChild
                 variant="ghost"
-                className="hidden text-white hover:bg-white/10 hover:text-white lg:inline-flex"
+                className="hidden text-[#3a2800] hover:bg-black/5 hover:text-[#3a2800] lg:inline-flex"
               >
                 <Link to="/login">Log in</Link>
               </Button>

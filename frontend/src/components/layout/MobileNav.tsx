@@ -31,7 +31,7 @@ export function MobileNav({
   const hide = variant === "hero" ? "lg:hidden" : "md:hidden";
   const triggerColor =
     variant === "hero"
-      ? "text-white hover:bg-white/10"
+      ? "text-[#3a2800] hover:bg-black/5"
       : "text-foreground hover:bg-secondary";
 
   // Close on Escape and lock body scroll while the panel is open.
