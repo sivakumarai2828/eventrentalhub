@@ -39,7 +39,7 @@ export function Login() {
     <div className="mx-auto flex max-w-md flex-col gap-6 px-4 py-16">
       <div className="text-center">
         <h1 className="text-2xl font-bold">Welcome back</h1>
-        <p className="text-muted-foreground">Log in to your EventRentHub account</p>
+        <p className="text-muted-foreground">Log in to your Party Loft account</p>
       </div>
       <Card className="space-y-4 p-6">
         <GoogleButton label="Log in with Google" />

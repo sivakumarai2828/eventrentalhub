@@ -11,7 +11,7 @@ export function DashboardTabs({ title, tabs }: { title: string; tabs: Tab[] }) {
     <div className="border-b bg-card">
       <div className="mx-auto max-w-7xl px-4">
         <div className="pt-8">
-          <span className="eyebrow">EventRentHub</span>
+          <span className="eyebrow">Party Loft</span>
           <h1 className="text-3xl font-semibold sm:text-4xl">{title}</h1>
         </div>
         <nav className="mt-5 flex gap-1 overflow-x-auto">

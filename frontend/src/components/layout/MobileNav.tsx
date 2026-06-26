@@ -69,7 +69,7 @@ export function MobileNav({
           <div className="absolute inset-x-0 top-0 max-h-[92vh] overflow-y-auto rounded-b-3xl bg-background p-5 shadow-2xl">
             <div className="flex items-center justify-between">
               <span className="font-serif text-lg font-semibold uppercase tracking-[0.14em]">
-                EventRentHub
+                Party Loft
               </span>
               <button
                 type="button"

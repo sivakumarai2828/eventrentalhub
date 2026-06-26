@@ -25,7 +25,10 @@ export function Footer() {
     <footer className="mt-20 bg-primary text-primary-foreground">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 sm:grid-cols-2 md:grid-cols-4">
         <div>
-          <div className="font-serif text-2xl tracking-[0.18em]">EVENTRENTHUB</div>
+          <div className="font-playfair text-3xl font-bold">
+            <span className="italic">Party</span>{" "}
+            <span className="text-gold">Loft</span>
+          </div>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-primary-foreground/55">
             Curated event décor rentals for life&apos;s most beautiful moments —
             backdrops, furniture, drapes, lighting and floral. Pay owners directly
@@ -73,11 +76,6 @@ export function Footer() {
             </Link>
           </li>
           <li>
-            <Link to="/become-a-host" className={linkClass}>
-              Become an owner
-            </Link>
-          </li>
-          <li>
             <Link to="/bookings" className={linkClass}>
               My requests
             </Link>
@@ -90,14 +88,14 @@ export function Footer() {
               How it works
             </Link>
           </li>
-          <li>hello@eventrenthub.com</li>
+          <li>hello@partyloft.com</li>
           <li>Instagram · Pinterest</li>
         </FooterCol>
       </div>
 
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-5 text-xs text-primary-foreground/45 sm:flex-row sm:justify-between">
-          <span>© {new Date().getFullYear()} EventRentHub. Pay owners at pickup — no online payments.</span>
+          <span>© {new Date().getFullYear()} Party Loft. Pay owners at pickup — no online payments.</span>
           <span>Privacy Policy · Terms of Service</span>
         </div>
       </div>

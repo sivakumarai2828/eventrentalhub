@@ -36,7 +36,7 @@ def _send(to: str, subject: str, body: str) -> None:
 def notify_request_submitted(owner_email: str, customer_name: str, item_count: int) -> None:
     _send(
         owner_email,
-        "New rental request on EventRentHub",
+        "New rental request on Party Loft",
         f"{customer_name or 'A customer'} sent you a rental request for "
         f"{item_count} item(s). Log in to your dashboard to review it.",
     )
@@ -60,14 +60,14 @@ def notify_quote_request(
         f"Details: {details or '—'}\n\n"
         "Reply directly to the customer to send availability and a quote."
     )
-    _send(owner_email, "New quote request on EventRentHub", body)
+    _send(owner_email, "New quote request on Party Loft", body)
 
 
 def notify_request_decided(customer_email: str, status: str) -> None:
     pretty = status.capitalize()
     _send(
         customer_email,
-        f"Your EventRentHub rental request was {pretty.lower()}",
+        f"Your Party Loft rental request was {pretty.lower()}",
         f"Good news — your rental request status is now: {pretty}.\n"
-        "Log in to EventRentHub to see the details.",
+        "Log in to Party Loft to see the details.",
     )

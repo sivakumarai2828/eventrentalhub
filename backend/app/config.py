@@ -27,7 +27,7 @@ class Settings(BaseSettings):
     smtp_port: int = 587
     smtp_user: str = ""
     smtp_password: str = ""
-    email_from: str = "EventRentHub <no-reply@eventrenthub.com>"
+    email_from: str = "Party Loft <no-reply@partyloft.com>"
     emails_enabled: bool = False
 
     @property

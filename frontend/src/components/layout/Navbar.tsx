@@ -19,12 +19,11 @@ import { useCart } from "@/context/CartContext";
 
 // Primary section tabs. The homepage is intentionally minimal (hero only), so
 // these tabs are how visitors reach everything that used to live on the home
-// page: catalogue, category grid, the explainer, and the host CTA.
+// page: catalogue, category grid, and the explainer.
 const NAV_TABS = [
   { label: "Browse", to: "/browse" },
   { label: "Categories", to: "/categories" },
   { label: "How it works", to: "/how-it-works" },
-  { label: "List your decor", to: "/become-a-host" },
 ];
 
 export function Navbar() {
@@ -171,12 +170,10 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b bg-background/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4">
-        <Link to="/" className="flex shrink-0 items-center gap-2">
-          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary font-serif text-base text-primary-foreground">
-            E
-          </span>
-          <span className="font-serif text-base font-semibold uppercase tracking-[0.08em] sm:text-xl sm:tracking-[0.18em]">
-            EventRentHub
+        <Link to="/" className="flex shrink-0 items-center">
+          <span className="font-playfair text-xl font-bold tracking-tight text-foreground sm:text-2xl">
+            <span className="italic">Party</span>{" "}
+            <span className="text-champagne-dark">Loft</span>
           </span>
         </Link>
 
