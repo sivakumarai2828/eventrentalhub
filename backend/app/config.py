@@ -29,6 +29,7 @@ class Settings(BaseSettings):
     smtp_password: str = ""
     email_from: str = "Party Loft <no-reply@partyloft.com>"
     emails_enabled: bool = False
+    notify_email: str = ""  # override recipient for all owner notifications
 
     @property
     def cors_origins_list(self) -> list[str]:

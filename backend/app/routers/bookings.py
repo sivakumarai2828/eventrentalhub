@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session, selectinload
 
 from .. import email_service, models, schemas, services
 from ..auth import get_current_user, get_optional_user
+from ..config import settings
 from ..database import get_db
 
 router = APIRouter(prefix="/api/bookings", tags=["bookings"])
@@ -114,7 +115,7 @@ def create_booking(
         if owner:
             requester = customer.name if customer else (payload.guest_name or "A guest")
             email_service.notify_request_submitted(
-                owner.email, requester, len(req.items)
+                settings.notify_email or owner.email, requester, len(req.items)
             )
         results.append(_serialize(db, req))
     return results
