@@ -252,6 +252,7 @@ export function Cart() {
               id="budget"
               type="number"
               placeholder="$"
+              min="0"
               value={form.budget}
               onChange={(e) => setForm({ ...form, budget: e.target.value })}
             />
@@ -287,7 +288,16 @@ export function Cart() {
             </p>
           </div>
 
-          {mutation.isError && <ErrorState message={(mutation.error as Error).message} />}
+          {mutation.isError && (
+            <ErrorState message={(() => {
+              const raw = (mutation.error as Error).message;
+              try {
+                const parsed = JSON.parse(raw);
+                if (Array.isArray(parsed) && parsed[0]?.msg) return parsed[0].msg;
+              } catch {}
+              return raw;
+            })()} />
+          )}
 
           <Button
             className="w-full"
